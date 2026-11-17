@@ -1,0 +1,12 @@
+node_modules/
+.env*
+!.env.example
+data/
+coverage/
+*.log
+.runtime/
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.zip

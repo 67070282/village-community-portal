@@ -1,0 +1,48 @@
+name: village-community-portal
+services:
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Run START-DOCKER.cmd to create .env}
+      MYSQL_DATABASE: village_portal
+      MYSQL_USER: village
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Run START-DOCKER.cmd to create .env}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$${MYSQL_PASSWORD}\" mysql --protocol=TCP -h127.0.0.1 -uvillage village_portal -e 'SELECT 1' >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+  app:
+    build: .
+    init: true
+    restart: unless-stopped
+    ports: ["127.0.0.1:${APP_PORT:-3000}:3000"]
+    environment:
+      DB_CLIENT: mysql
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: village_portal
+      MYSQL_USER: village
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Run START-DOCKER.cmd to create .env}
+      JWT_SECRET: ${JWT_SECRET:?Run START-DOCKER.cmd to create .env}
+      HOST: 0.0.0.0
+      PORT: 3000
+      SEED_DEMO: "true"
+      NODE_ENV: development
+    volumes: ["app_data:/app/data"]
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/v1/health').then(async r=>{const j=await r.json();if(!r.ok||j.data.database!=='mysql')process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+volumes:
+  mysql_data:
+  app_data:

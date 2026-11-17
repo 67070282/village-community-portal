@@ -1,0 +1,8 @@
+node_modules
+data
+.env
+.git
+*.zip
+.runtime
+work
+docs/dashboard-preview.jpg

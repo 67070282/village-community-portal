@@ -1,0 +1,32 @@
+
+> village-community-portal@1.0.0 test
+> node --test tests/*.test.js
+
+✔ public health, OpenAPI and static app are available (308.8809ms)
+✔ private APIs reject anonymous access and tampered JWT (3.5803ms)
+✔ login cookie has HttpOnly and SameSite; passwords are not exposed (71.9302ms)
+✔ resident cannot access staff/admin operations or escalate at registration (42.8434ms)
+✔ post lifecycle: create, owner edit, staff status, history, comments, delete cascade (27.3424ms)
+✔ post filtering, pagination, SQL injection input and validation (7.1994ms)
+✔ loan stock atomicity: concurrent borrow, ownership, return, duplicate return (49.1918ms)
+✔ invalid due dates and quantities leave stock unchanged (10.3975ms)
+✔ event capacity under concurrent requests and duplicate join prevention (16.9776ms)
+✔ announcements: resident denied, staff CRUD and pin (11.908ms)
+✔ notifications are private and read-all only affects owner (7.36ms)
+✔ CSV export prevents spreadsheet formula injection (7.5254ms)
+✔ admin changes role/active, revokes sessions, and cannot disable self (46.4494ms)
+✔ password change checks current password and revokes existing token (174.1036ms)
+✔ logout revokes bearer token as well as cookie (40.8127ms)
+✔ cross-origin writes, malformed JSON, wrong content type and oversized body rejected (4.9996ms)
+✔ category CRUD uses generated IDs and refuses deleting a referenced category (11.5279ms)
+✔ equipment edits preserve borrowed counts and reject reducing total below loans (4.8754ms)
+✔ event editing, join and unjoin preserve membership and capacity (10.6196ms)
+✔ profile update, loan ownership, report aggregate and user detail privacy (40.436ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 983.3237

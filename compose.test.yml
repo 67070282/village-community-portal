@@ -1,0 +1,28 @@
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Prepare .env first}
+      MYSQL_DATABASE: village_test
+      MYSQL_USER: village
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Prepare .env first}
+    tmpfs: ["/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$${MYSQL_PASSWORD}\" mysql --protocol=TCP -h127.0.0.1 -uvillage village_test -e 'SELECT 1' >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+  test:
+    build: .
+    command: ["npm", "test"]
+    environment:
+      TEST_DB_CLIENT: mysql
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: village_test
+      MYSQL_USER: village
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Prepare .env first}
+    depends_on:
+      db:
+        condition: service_healthy

@@ -1,0 +1,37 @@
+test-1  | 
+test-1  | > village-community-portal@1.0.0 test
+test-1  | > node --test tests/*.test.js
+test-1  | 
+test-1  | ✔ public health, OpenAPI and static app are available (443.858018ms)
+test-1  | ✔ private APIs reject anonymous access and tampered JWT (5.058913ms)
+test-1  | ✔ login cookie has HttpOnly and SameSite; passwords are not exposed (61.266774ms)
+test-1  | ✔ resident cannot access staff/admin operations or escalate at registration (43.769752ms)
+test-1  | ✔ post lifecycle: create, owner edit, staff status, history, comments, delete cascade (43.93167ms)
+test-1  | ✔ post filtering, pagination, SQL injection input and validation (16.334109ms)
+test-1  | ✔ loan stock atomicity: concurrent borrow, ownership, return, duplicate return (85.217272ms)
+test-1  | ✔ invalid due dates and quantities leave stock unchanged (17.810994ms)
+test-1  | ✔ event capacity under concurrent requests and duplicate join prevention (27.558962ms)
+test-1  | ✔ announcements: resident denied, staff CRUD and pin (14.043114ms)
+test-1  | ✔ notifications are private and read-all only affects owner (10.672176ms)
+test-1  | ✔ CSV export prevents spreadsheet formula injection (9.759906ms)
+test-1  | ✔ admin changes role/active, revokes sessions, and cannot disable self (53.393953ms)
+test-1  | ✔ password change checks current password and revokes existing token (168.106115ms)
+test-1  | ✔ logout revokes bearer token as well as cookie (40.646963ms)
+test-1  | ✔ cross-origin writes, malformed JSON, wrong content type and oversized body rejected (6.499363ms)
+test-1  | ✔ category CRUD uses generated IDs and refuses deleting a referenced category (19.157608ms)
+test-1  | ✔ equipment edits preserve borrowed counts and reject reducing total below loans (7.649787ms)
+test-1  | ✔ event editing, join and unjoin preserve membership and capacity (18.392899ms)
+test-1  | ✔ profile update, loan ownership, report aggregate and user detail privacy (45.253994ms)
+test-1  | ℹ tests 20
+test-1  | ℹ suites 0
+test-1  | ℹ pass 20
+test-1  | ℹ fail 0
+test-1  | ℹ cancelled 0
+test-1  | ℹ skipped 0
+test-1  | ℹ todo 0
+test-1  | ℹ duration_ms 1207.594022
+test-1  | npm notice
+test-1  | npm notice New major version of npm available! 11.19.1 -> 12.2.2
+test-1  | npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+test-1  | npm notice To update run: npm install -g npm@12.2.2
+test-1  | npm notice

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>API Reference — บ้านเดียวกัน</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" />
+    <script src="/docs.js" type="module"></script>
+  </head>
+  <body>
+    <main class="docs-container">
+      <a class="btn" href="/">กลับสู่ศูนย์ชุมชน</a>
+      <h1 class="docs-title">Village Community Portal API</h1>
+      <p>REST API v1 · JWT (HS256) · MySQL 8 / SQLite Demo</p>
+      <p class="muted">
+        เอกสารนี้สร้างจาก Route ที่เซิร์ฟเวอร์ใช้งานจริง ดาวน์โหลด
+        <a href="/api/v1/openapi.json" download="openapi.json"
+          >OpenAPI 3.0 JSON</a
+        >
+        เพื่อนำเข้า Postman หรือ Swagger Editor ได้
+      </p>
+      <div class="notice section-gap">
+        Public: ไม่ต้องล็อกอิน · Resident: สมาชิกทุกบทบาท · Owner:
+        เจ้าของรายการหรือ Admin · Staff: นิติบุคคลและ Admin · Admin:
+        ผู้ดูแลระบบเท่านั้น
+      </div>
+      <section class="panel padded">
+        <h2>ทดลองเรียก API</h2>
+        <p class="small muted">
+          เข้าสู่ระบบที่หน้าเว็บก่อน ใช้ cookie ของเซสชันปัจจุบัน หรือใส่ Bearer
+          token ด้านล่าง ช่องว่างหมายถึงใช้ cookie ของหน้าเว็บ
+        </p>
+        <form id="try-form" class="section-gap">
+          <div class="form-row">
+            <div class="field">
+              <label for="method">Method</label
+              ><select id="method" name="method">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PATCH</option>
+                <option>DELETE</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="path">Path</label
+              ><input id="path" name="path" value="/api/v1/health" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="token">Bearer token (ไม่บังคับ)</label
+            ><input
+              id="token"
+              name="token"
+              type="password"
+              autocomplete="off"
+            />
+          </div>
+          <div class="field">
+            <label for="body">JSON body</label
+            ><textarea id="body" name="body" placeholder="{}"></textarea>
+          </div>
+          <p class="small muted">
+            POST / PATCH / DELETE จะเปลี่ยนข้อมูลจริงในฐานข้อมูลที่กำลังใช้งาน
+          </p>
+          <button class="btn primary section-gap">ส่งคำขอ</button>
+        </form>
+        <pre id="result" class="code" aria-live="polite"></pre>
+      </section>
+      <input
+        id="filter"
+        class="full section-gap"
+        placeholder="ค้นหา method, path หรือคำอธิบาย"
+        aria-label="ค้นหา API"
+      />
+      <p id="count" class="docs-count"></p>
+      <div id="endpoints"></div>
+    </main>
+  </body>
+</html>

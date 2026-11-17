@@ -1,0 +1,10 @@
+{
+  "name": "village-community-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ระบบศูนย์ชุมชนหมู่บ้านจัดสรร — MySQL 8 + REST API + responsive Thai UI",
+  "engines": { "node": ">=24.0.0" },
+  "scripts": { "start": "node --env-file-if-exists=.env src/server.js", "dev": "node --watch --env-file-if-exists=.env src/server.js", "test": "node --test tests/*.test.js", "db:init": "node --env-file-if-exists=.env src/init.js" },
+  "dependencies": { "mysql2": "^3.15.3" }
+}
