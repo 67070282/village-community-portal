@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" fill="none">
+  <title>ภาพลายเส้นบ้านและพื้นที่ส่วนกลางในชุมชน</title>
+  <g stroke="#002fa7" stroke-width="1" opacity=".13"><path d="M0 260h520M0 220h520M0 180h520M0 140h520M0 100h520M0 60h520M40 0v280M100 0v280M160 0v280M220 0v280M280 0v280M340 0v280M400 0v280M460 0v280"/></g>
+  <g stroke="#002fa7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m193 125 96-66 95 66v112H193Z" fill="#ffffff"/><path d="m180 127 109-76 108 76M208 117l81-55 81 55"/><path d="M218 140h43v39h-43ZM316 140h43v39h-43ZM271 197h36v40h-36M239 140v39m-21-19h43m76-20v39m-21-19h43"/><path d="m58 171 61-44 61 44v66H58Z" fill="#ffffff"/><path d="m48 172 71-53 72 53M75 181h26v27H75m62-27h26v27h-26m-29 5h22v24M48 237h349"/><path d="M433 237V126m0 48-21-15m21 42 22-21"/><path d="M407 123c-7-34 38-49 52-17 31 2 41 40 17 57-14 20-37 14-45 6-35 9-48-26-24-46Z" fill="#ffffff"/><path d="M22 237v-43m0 13-11-9m11 24 12-11"/><circle cx="22" cy="181" r="21" fill="#ffffff"/><path d="M271 237 247 279m60-42 25 42M411 237h62m-56-12h51m-47-10h44m-35 10v12m26-12v12M176 237c-1-19-28-19-28 0m231 0c0-16 25-16 25 0"/>
+  </g>
+  <g stroke="#002fa7" opacity=".45" stroke-width="1"><path d="M367 51h19m-10-10v20M94 78h13m-6-7v14M62 253h101m180 0h65"/><circle cx="448" cy="61" r="18"/></g>
+</svg>

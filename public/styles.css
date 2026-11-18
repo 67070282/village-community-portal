@@ -4,7 +4,7 @@
   --blue: #002fa7;
   --blue-soft: #edf1fb;
   --ink: #202124;
-  --muted: #62656c;
+  --muted: #575b65;
   --line: #dedfe3;
   --bg: #f7f7f8;
   --white: #ffffff;
@@ -261,7 +261,7 @@ h3 {
   white-space: nowrap;
 }
 
-/* Navigation stays quiet; the current location has a single blue rule. */
+/* Navigation shares the same strong selected state as the action controls. */
 .shell {
   display: grid;
   grid-template-columns: 250px minmax(0, 1fr);
@@ -2060,13 +2060,16 @@ tbody tr:last-child td {
   }
   .service-grid {
     margin: 15px 0 21px;
+    grid-template-columns: 1fr;
+    gap: 9px;
   }
   .service-card {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 17px 13px;
-    min-height: 132px;
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) 32px;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    min-height: 88px;
   }
   .service-number {
     font-size: 27px;
@@ -2076,15 +2079,18 @@ tbody tr:last-child td {
     font-size: 14px;
   }
   .service-card small {
-    display: none;
+    display: block;
+    font-size: 12px;
+    margin-top: 4px;
   }
   .service-card > .icon {
-    position: absolute;
-    top: 20px;
-    right: 11px;
-    width: 14px;
-    height: 14px;
+    position: static;
+    grid-column: 3;
+    grid-row: 1;
+    width: 32px;
+    height: 32px;
   }
+  .service-card > div { grid-column: 2; grid-row: 1; }
   .stats {
     margin-bottom: 23px;
   }
@@ -2361,7 +2367,7 @@ tbody tr:last-child td {
     font-size: 13px;
   }
   .service-card strong {
-    font-size: 13px;
+    font-size: 15px;
   }
   .stat {
     padding: 16px;

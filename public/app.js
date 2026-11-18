@@ -134,8 +134,9 @@ function formData(form) {
 }
 function renderAuth(register = false) {
   document.body.classList.remove("nav-open");
+  delete document.body.dataset.page;
   $("#app").innerHTML =
-    `<div class="auth"><section class="auth-story">${brand()}<div><h1>ชุมชนที่น่าอยู่<br>เริ่มที่เราทุกคน</h1><p>พื้นที่เดียวสำหรับทุกเรื่องในหมู่บ้าน<br>แจ้งปัญหา แบ่งปัน และดูแลกันได้ง่ายขึ้น</p></div><img src="/community-map.svg" alt="ภาพประกอบหมู่บ้านและพื้นที่สีเขียว"><div class="auth-foot"><span>เชื่อมต่อเพื่อนบ้าน ให้ใกล้กันกว่าเดิม</span><span>สำหรับลูกบ้านและนิติบุคคล</span></div></section><main class="auth-form" id="main" tabindex="-1"><div><span class="eyebrow muted">ศูนย์ชุมชนออนไลน์</span><h2>${register ? "สมัครเป็นสมาชิก" : "ยินดีต้อนรับกลับบ้าน"}</h2><p class="muted">${register ? "สร้างบัญชีลูกบ้านเพื่อเริ่มใช้งานศูนย์ชุมชน" : "เข้าสู่ระบบเพื่อดูแลเรื่องราวในชุมชนของคุณ"}</p><form id="auth-form">${register ? field("full_name", "ชื่อ–นามสกุล", "text", "", 'minlength="2" maxlength="100" autocomplete="name"') + `<div class="form-row">${field("house_number", "บ้านเลขที่", "text", "", 'maxlength="20"')}${field("phone", "เบอร์โทรศัพท์", "tel", "", 'pattern="[0-9+\-]{9,15}" maxlength="15" autocomplete="tel"')}</div>` : ""}${field("email", "อีเมล", "email", "", 'autocomplete="email" maxlength="150" placeholder="name@example.com"')}${field("password", "รหัสผ่าน", "password", "", 'autocomplete="' + (register ? "new-password" : "current-password") + '" ' + (register ? 'minlength="10"' : "") + ' maxlength="128" placeholder="' + (register ? "อย่างน้อย 10 ตัวอักษร" : "กรอกรหัสผ่าน") + '"')}<div class="error" id="auth-error" role="alert"></div><button class="btn primary full" type="submit">${register ? "สมัครสมาชิก" : "เข้าสู่ระบบ"}${icon("arrow")}</button></form><p class="auth-toggle small">${register ? "มีบัญชีแล้ว?" : "ยังไม่มีบัญชี?"} <button class="btn subtle sm" id="auth-toggle">${register ? "เข้าสู่ระบบ" : "สมัครสมาชิก"}</button></p>${state.demo && !register ? `<div class="demo-box"><strong class="small">ทดลองใช้งานด้วยข้อมูลสาธิต</strong><p class="small muted">เลือกบทบาทเพื่อสำรวจการทำงานของระบบ</p><div class="demo-buttons">${["resident", "juristic", "admin"].map((r) => `<button class="btn sm" data-demo="${r}">${roles[r]}</button>`).join("")}</div><p class="small muted">รหัสผ่านทุกบัญชี: <span class="code">Village@123</span></p></div>` : ""}<p class="small muted" style="margin-top:22px">${icon("shield")} บัญชีลูกบ้านเข้าถึงเฉพาะข้อมูลที่มีสิทธิ์ใช้งาน</p></div></main></div>`;
+    `<div class="auth"><section class="auth-story">${brand()}<div><h1>ชุมชนที่น่าอยู่<br>เริ่มที่เราทุกคน</h1><p>พื้นที่เดียวสำหรับทุกเรื่องในหมู่บ้าน<br>แจ้งปัญหา แบ่งปัน และดูแลกันได้ง่ายขึ้น</p></div><img src="/community-day.svg" alt="ภาพประกอบหมู่บ้านและพื้นที่สีเขียว"><div class="auth-foot"><span>เชื่อมต่อเพื่อนบ้าน ให้ใกล้กันกว่าเดิม</span><span>สำหรับลูกบ้านและนิติบุคคล</span></div></section><main class="auth-form" id="main" tabindex="-1"><div><span class="eyebrow muted">ศูนย์ชุมชนออนไลน์</span><h2>${register ? "สมัครเป็นสมาชิก" : "ยินดีต้อนรับกลับบ้าน"}</h2><p class="muted">${register ? "สร้างบัญชีลูกบ้านเพื่อเริ่มใช้งานศูนย์ชุมชน" : "เข้าสู่ระบบเพื่อดูแลเรื่องราวในชุมชนของคุณ"}</p><form id="auth-form">${register ? field("full_name", "ชื่อ–นามสกุล", "text", "", 'minlength="2" maxlength="100" autocomplete="name"') + `<div class="form-row">${field("house_number", "บ้านเลขที่", "text", "", 'maxlength="20"')}${field("phone", "เบอร์โทรศัพท์", "tel", "", 'pattern="[0-9+\-]{9,15}" maxlength="15" autocomplete="tel"')}</div>` : ""}${field("email", "อีเมล", "email", "", 'autocomplete="email" maxlength="150" placeholder="name@example.com"')}${field("password", "รหัสผ่าน", "password", "", 'autocomplete="' + (register ? "new-password" : "current-password") + '" ' + (register ? 'minlength="10"' : "") + ' maxlength="128" placeholder="' + (register ? "อย่างน้อย 10 ตัวอักษร" : "กรอกรหัสผ่าน") + '"')}<div class="error" id="auth-error" role="alert"></div><button class="btn primary full" type="submit">${register ? "สมัครสมาชิก" : "เข้าสู่ระบบ"}${icon("arrow")}</button></form><p class="auth-toggle small">${register ? "มีบัญชีแล้ว?" : "ยังไม่มีบัญชี?"} <button class="btn subtle sm" id="auth-toggle">${register ? "เข้าสู่ระบบ" : "สมัครสมาชิก"}</button></p>${state.demo && !register ? `<div class="demo-box"><strong class="small">ทดลองใช้งานด้วยข้อมูลสาธิต</strong><p class="small muted">เลือกบทบาทเพื่อสำรวจการทำงานของระบบ</p><div class="demo-buttons">${["resident", "juristic", "admin"].map((r) => `<button class="btn sm" data-demo="${r}">${roles[r]}</button>`).join("")}</div><p class="small muted">รหัสผ่านทุกบัญชี: <span class="code">Village@123</span></p></div>` : ""}<p class="small muted" style="margin-top:22px">${icon("shield")} บัญชีลูกบ้านเข้าถึงเฉพาะข้อมูลที่มีสิทธิ์ใช้งาน</p></div></main></div>`;
   $("#auth-toggle").onclick = () => renderAuth(!register);
   $("#auth-form").onsubmit = async (e) => {
     e.preventDefault();
@@ -228,13 +229,19 @@ matchMedia("(max-width: 1000px)").addEventListener("change", () =>
 async function renderShell() {
   if (!state.user) return renderAuth();
   document.body.classList.remove("nav-open");
+  document.body.dataset.page = state.page;
   $("#app").innerHTML = `
     <div class="shell">
       <button class="nav-scrim" hidden data-action="close-menu" aria-label="ปิดเมนู"></button>
       <aside class="sidebar" id="primary-navigation" aria-label="เมนูหลัก">
         <div class="side-brand">${brand()}<button class="icon-btn nav-close" data-action="close-menu" aria-label="ปิดเมนู">${icon("x")}</button></div>
-        <div class="nav-group">ชุมชนของเรา</div>
-        <nav>${navItems.map(([page, i, label]) => nav(page, i, page === "loans" && isStaff() ? "รายการยืม–คืนทั้งหมด" : label)).join("")}</nav>
+        <nav aria-label="ภาพรวม">${nav("dashboard", "grid", "ภาพรวมชุมชน")}</nav>
+        <div class="nav-group">แจ้งเรื่องและช่วยเหลือ</div>
+        <nav aria-label="แจ้งเรื่องและช่วยเหลือ">${nav("posts", "chat", "แจ้งปัญหา / ติดตามเรื่อง")}${nav("lost", "paw", "สัตว์เลี้ยงและของหาย")}</nav>
+        <div class="nav-group">ทรัพยากรส่วนกลาง</div>
+        <nav aria-label="ทรัพยากรส่วนกลาง">${nav("equipment", "box", "ยืม–คืนอุปกรณ์")}${nav("loans", "clock", isStaff() ? "รายการยืม–คืนทั้งหมด" : "รายการยืมของฉัน")}</nav>
+        <div class="nav-group">ข่าวสารและกิจกรรม</div>
+        <nav aria-label="ข่าวสารและกิจกรรม">${nav("announcements", "megaphone", "ข่าวสารและประกาศ")}${nav("events", "calendar", "กิจกรรมชุมชน")}</nav>
         ${isStaff() ? `<div class="nav-group">สำหรับ${roles[state.user.role]}</div><nav>${nav("reports", "chart", "สถิติและรายงาน")}${isAdmin() ? nav("users", "users", "จัดการสมาชิก") + nav("audit", "shield", "ประวัติการดำเนินงาน") : ""}</nav>` : ""}
         <div class="side-bottom">
           <div class="help-box"><strong>ติดต่อฝ่ายนิติบุคคล</strong><p>ส่งเรื่องและติดตามการตอบกลับ<br>ผ่านศูนย์ชุมชนได้โดยตรง</p><button class="btn sm full" data-action="new-post">${icon("chat")}ส่งเรื่องถึงนิติบุคคล ${icon("arrow")}</button></div>
@@ -313,15 +320,15 @@ async function dashboard() {
     .slice(0, 2);
   return `
     ${heading("ภาพรวมชุมชน", `สวัสดี คุณ${esc(state.user.full_name.split(" ")[0])} วันนี้ให้เราช่วยดูแลเรื่องอะไรดี?`, `<div class="today">${icon("calendar")}${date(new Date(), { day: "numeric", month: "long", year: "numeric" })}</div>`)}
-    <section class="hero" aria-label="บริการศูนย์ชุมชน">
-      <div class="hero-content"><div class="eyebrow">บ้านเดียวกัน · ศูนย์ชุมชนออนไลน์</div><h2>ทุกเรื่องของชุมชน<br>ดูแลได้ในที่เดียว</h2><p>แจ้งปัญหา แบ่งปันอุปกรณ์ และติดตามข่าวสารของหมู่บ้าน</p><div class="hero-buttons"><button class="btn" data-action="new-post">${icon("plus")}แจ้งเรื่องใหม่</button><a href="#posts?mine=true">ติดตามเรื่องของฉัน ${icon("arrow")}</a></div></div>
-      <img src="/community-map.svg" alt="ภาพลายเส้นบ้านและพื้นที่ส่วนกลางในชุมชน">
+    <div class="dashboard-intro"><section class="hero" aria-label="บริการศูนย์ชุมชน">
+      <div class="hero-content"><div class="eyebrow">ศูนย์ชุมชนหมู่บ้านจัดสรร</div><h2>พื้นที่ของเรา<br><span>ดูแลด้วยกัน</span></h2><p>แจ้งปัญหา แบ่งปันอุปกรณ์ และติดตามข่าวสาร<br>ให้ทุกเรื่องในหมู่บ้านเป็นเรื่องง่าย</p><div class="hero-buttons"><button class="btn primary" data-action="new-post">${icon("plus")}แจ้งเรื่องใหม่</button><a href="#posts?mine=true">ติดตามเรื่องของฉัน ${icon("arrow")}</a></div></div>
+      <img src="/community-day.svg" alt="ภาพลายเส้นบ้านและพื้นที่ส่วนกลางในชุมชน">
     </section>
     <section class="service-grid" aria-label="บริการหลัก">
-      <button class="service-card" data-action="new-post"><span class="service-number" aria-hidden="true">01</span><div><strong>แจ้งปัญหา</strong><small>ส่งเรื่องให้นิติบุคคลช่วยดูแล</small></div>${icon("arrow")}</button>
-      <button class="service-card" data-action="new-lost"><span class="service-number" aria-hidden="true">02</span><div><strong>ประกาศของหาย</strong><small>ตามหาสิ่งของและสัตว์เลี้ยง</small></div>${icon("arrow")}</button>
-      <button class="service-card" data-go="equipment"><span class="service-number" aria-hidden="true">03</span><div><strong>ยืมอุปกรณ์</strong><small>ใช้ทรัพยากรส่วนกลางร่วมกัน</small></div>${icon("arrow")}</button>
-    </section>
+      <button class="service-card" data-action="new-post"><span class="service-symbol">${icon("chat")}</span><div><strong>แจ้งปัญหา</strong><small>ส่งเรื่องให้นิติบุคคลช่วยดูแล</small></div>${icon("arrow")}</button>
+      <button class="service-card" data-action="new-lost"><span class="service-symbol">${icon("paw")}</span><div><strong>ประกาศของหาย</strong><small>ตามหาสิ่งของและสัตว์เลี้ยง</small></div>${icon("arrow")}</button>
+      <button class="service-card" data-go="equipment"><span class="service-symbol">${icon("box")}</span><div><strong>ยืมอุปกรณ์</strong><small>ใช้ทรัพยากรส่วนกลางร่วมกัน</small></div>${icon("arrow")}</button>
+    </section></div>
     <section class="stats" aria-label="สถิติชุมชน">${stats.map(([label, value, unit, note, i]) => `<div class="stat"><div class="stat-icon">${icon(i)}</div><div class="stat-label">${label}</div><div class="stat-value">${value}<span>${unit}</span></div><div class="stat-note">${note}</div></div>`).join("")}</section>
     <div class="content-grid">
       <div>
@@ -329,7 +336,7 @@ async function dashboard() {
         <section class="panel section-gap"><div class="panel-head"><h2>รายการของคุณ</h2>${icon("user")}</div><div class="personal-links"><a class="personal-link" href="#posts?mine=true"><div><strong>${d.my_posts}</strong><span>เรื่องที่คุณแจ้ง</span></div>${icon("arrow")}</a><a class="personal-link" href="#loans"><div><strong>${d.my_loans}</strong><span>รายการที่กำลังยืม</span></div>${icon("arrow")}</a></div></section>
       </div>
       <div class="right-column">
-        <section class="panel"><div class="panel-head"><h2>ประกาศจากนิติบุคคล</h2><a href="#announcements">ทั้งหมด ${icon("arrow")}</a></div><div class="panel-body">${
+        <section class="panel news-panel"><div class="panel-head"><h2>ประกาศจากนิติบุคคล</h2><a href="#announcements">ทั้งหมด ${icon("arrow")}</a></div><div class="panel-body">${
           anns
             .slice(0, 2)
             .map(
@@ -338,7 +345,7 @@ async function dashboard() {
             )
             .join("") || '<p class="muted">ยังไม่มีประกาศ</p>'
         }</div></section>
-        <section class="panel section-gap"><div class="panel-head"><h2>กิจกรรมเร็ว ๆ นี้</h2><a href="#events">ทั้งหมด ${icon("arrow")}</a></div><div class="panel-body">${upcoming.map((e) => `<div class="event-mini">${dateBlock(e.starts_at)}<div><h3>${esc(e.title)}</h3><p>${esc(e.location)}</p><a href="#events">ดูรายละเอียด ${icon("arrow")}</a></div></div>`).join("") || '<p class="muted">ยังไม่มีกิจกรรมที่กำลังจะมาถึง</p>'}</div></section>
+        <section class="panel section-gap events-panel"><div class="panel-head"><h2>กิจกรรมเร็ว ๆ นี้</h2><a href="#events">ทั้งหมด ${icon("arrow")}</a></div><div class="panel-body">${upcoming.map((e) => `<div class="event-mini">${dateBlock(e.starts_at)}<div><h3>${esc(e.title)}</h3><p>${esc(e.location)}</p><a href="#events">ดูรายละเอียด ${icon("arrow")}</a></div></div>`).join("") || '<p class="muted">ยังไม่มีกิจกรรมที่กำลังจะมาถึง</p>'}</div></section>
       </div>
     </div>
     ${state.demo ? `<div class="demo-strip"><span>${icon("shield")}ข้อมูลสาธิตสำหรับทดลองใช้งานระบบ</span><a href="/docs" target="_blank" rel="noopener">เอกสาร API ${icon("arrow")}</a></div>` : ""}`;
