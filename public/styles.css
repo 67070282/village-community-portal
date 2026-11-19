@@ -8,7 +8,7 @@
   --line: #dedfe3;
   --bg: #f7f7f8;
   --white: #ffffff;
-  --sans: "Helvetica Neue", "Leelawadee UI", Tahoma, Arial, sans-serif;
+  --sans: "Mitr", "Leelawadee UI", Tahoma, Arial, sans-serif;
   font-family: var(--sans);
   color: var(--ink);
   background: var(--bg);

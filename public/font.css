@@ -1,1 +1,30 @@
-/* Uses installed Thai fonts and system sans-serif. No external font request. */
+/* Mitr by Cadson Demak / Google Fonts, self-hosted under the SIL Open Font License.
+   License: /fonts/mitr/OFL.txt. No third-party font requests. */
+@font-face {
+  font-family: "Mitr";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/mitr/Mitr-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Mitr";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/mitr/Mitr-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Mitr";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/mitr/Mitr-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Mitr";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/mitr/Mitr-Bold.ttf") format("truetype");
+}
